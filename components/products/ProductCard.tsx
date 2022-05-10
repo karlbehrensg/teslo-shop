@@ -25,14 +25,11 @@ export const ProductCard: FC<Props> = ({ product }) => {
   }, [isHovered, product.images]);
 
   return (
-    <Grid
-      item
-      xs={6}
-      sm={4}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <Card>
+    <Grid item xs={6} sm={4}>
+      <Card
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <NextLink href="/product/slug" passHref prefetch={false}>
           <Link>
             <CardActionArea>
