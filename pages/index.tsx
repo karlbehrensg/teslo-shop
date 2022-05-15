@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
 import { Typography } from "@mui/material";
 import { ShopLayout } from "../components/layout";
-import { initialData } from "../database/products";
 import { ProductList } from "../components/products";
+import { useProducts } from "../hooks";
 
 const Home: NextPage = () => {
+  const { products, isLoading } = useProducts("/products");
+
   return (
     <ShopLayout
       title={"Teslo-Shop"}
@@ -15,7 +17,7 @@ const Home: NextPage = () => {
         All products
       </Typography>
 
-      <ProductList products={initialData.products as any} />
+      {isLoading ? <h1>Loading ....</h1> : <ProductList products={products} />}
     </ShopLayout>
   );
 };
