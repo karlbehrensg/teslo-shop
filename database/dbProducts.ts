@@ -2,6 +2,10 @@ import { db } from "./";
 import { Product } from "../models";
 import { IProduct } from "../interfaces";
 
+interface ProductSlug {
+  slug: string;
+}
+
 export const getProductBySlug = async (
   slug: string
 ): Promise<IProduct | null> => {
@@ -14,4 +18,12 @@ export const getProductBySlug = async (
   }
 
   return JSON.parse(JSON.stringify(product));
+};
+
+export const getAllProductsSlugs = async (): Promise<ProductSlug[]> => {
+  await db.connect();
+  const slugs = await Product.find().select("slug -_id").lean();
+  await db.disconnect();
+
+  return slugs;
 };
