@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { db, SHOP_CONSTANTS } from "../../../database";
 import { Product } from "../../../models";
-import { IProduct } from "../../../interfaces/products";
+import { IProduct } from "../../../interfaces";
 
 type Data = { message: string } | IProduct[];
 
@@ -14,7 +14,7 @@ export default function handler(
       return getProducts(req, res);
 
     default:
-      return res.status(200).json({ message: "Example" });
+      return res.status(400).json({ message: "Bad request" });
   }
 }
 
