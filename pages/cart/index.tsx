@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import {
   Box,
   Button,
@@ -27,9 +28,11 @@ const CartPage = () => {
               <Divider sx={{ my: 1 }} />
               <OrderSummary />
               <Box sx={{ mt: 3 }}>
-                <Button color="secondary" className="circular-btn" fullWidth>
-                  Checkout
-                </Button>
+                <NextLink href="/checkout/address" passHref>
+                  <Button color="secondary" className="circular-btn" fullWidth>
+                    Checkout
+                  </Button>
+                </NextLink>
               </Box>
             </CardContent>
           </Card>

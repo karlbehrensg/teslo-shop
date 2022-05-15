@@ -1,9 +1,9 @@
+import NextLink from "next/link";
 import {
   Box,
   Button,
   FormControl,
   Grid,
-  InputLabel,
   MenuItem,
   Select,
   TextField,
@@ -49,9 +49,11 @@ const AddressPage = () => {
         </Grid>
       </Grid>
       <Box sx={{ mt: 5 }} display="flex" justifyContent="center">
-        <Button color="secondary" className="circular-btn" size="large">
-          Check order
-        </Button>
+        <NextLink href="/checkout/summary" passHref>
+          <Button color="secondary" className="circular-btn" size="large">
+            Check order
+          </Button>
+        </NextLink>
       </Box>
     </ShopLayout>
   );
